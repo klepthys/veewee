@@ -1,7 +1,7 @@
 # Clean up
 apt-get -y remove linux-headers-$(uname -r) build-essential
 apt-get -y autoremove
-apt-get -y clean
+apt-get -y clean all
 
 # Removing leftover leases and persistent rules
 echo "cleaning up dhcp leases"
