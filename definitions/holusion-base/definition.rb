@@ -1,4 +1,3 @@
-#Thanks to Fletcher Nichol - https://github.com/fnichol
 
 Veewee::Definition.declare({
   :cpu_count => '1',
@@ -16,7 +15,6 @@ Veewee::Definition.declare({
 	'file=/cdrom/preseed/./preseed.cfg ',
 	'auto=true priority=critical ',
 	'classes=base;virtual',
-#	'classes=base',
 	'<Enter>'
   ],
   :ssh_login_timeout => "1000",

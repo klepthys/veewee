@@ -1,4 +1,3 @@
-#Thanks to Fletcher Nichol - https://github.com/fnichol
 
 Veewee::Definition.declare({
   :cpu_count => '1',
@@ -9,8 +8,13 @@ Veewee::Definition.declare({
   :iso_src => "http://holusion.net/holusion_installer.iso",
   :iso_md5 => "8600f5f5de36f8fe5599ca5d18901b7a",
   :iso_download_timeout => "1000",
-  :boot_wait => "10", :boot_cmd_sequence => [
-
+    :boot_wait => "10", :boot_cmd_sequence => [
+	'<Esc>',
+	'/install.amd/vmlinuz ',
+	'initrd=/install.amd/initrd.gz ',
+	'file=/cdrom/preseed/./preseed.cfg ',
+	'auto=true priority=critical ',
+	'classes=base;stable;virtual',
 	'<Enter>'
   ],
   :ssh_login_timeout => "1000",
