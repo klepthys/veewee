@@ -15,7 +15,7 @@ Veewee::Definition.declare({
 	'initrd=/install.amd/initrd.gz ',
 	'file=/cdrom/preseed/./preseed.cfg ',
 	'auto=true priority=critical ',
-	'classes=base;vagrant',
+	'classes=base;virtual',
 #	'classes=base',
 	'<Enter>'
   ],
