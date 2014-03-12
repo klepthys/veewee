@@ -1,4 +1,6 @@
 # Update the box
+# Makes sure boot finished before beginning
+sleep 30
 #Everything here will probably be already installed but it doesn't hurt to check...
 apt-get -y update
 apt-get -y install linux-headers-$(uname -r) build-essential
