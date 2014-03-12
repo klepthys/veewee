@@ -17,7 +17,7 @@ Veewee::Definition.declare({
 	'classes=base;stable;virtual',
 	'<Enter>'
   ],
-  :ssh_login_timeout => "1000",
+  :ssh_login_timeout => "1500",
   :ssh_user => "root",
   :ssh_password => "holobox",
   :ssh_key => "",
