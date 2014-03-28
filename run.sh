@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-if [  -d $WORKSPACE ] ; then
+if [ -d $WORKSPACE ] ; then
 	echo "changing current working directory to : $WORKSPACE"
 	cd $WORKSPACE
 fi
