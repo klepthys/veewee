@@ -18,8 +18,8 @@ fi
 
 if [ $USE_XVNC = true ] ; then
 	#Check for Xvnc
-	which Xvnc || XVNC=Xvnc
-	which Xvnc4 || XVNC=Xvnc4
+	 [ -z `which Xvnc` ] || XVNC=Xvnc
+	 [ -z `which Xvnc4` ] XVNC=Xvnc4
 	[ ! -f "ephemeral-x.sh" ] || wget -O ephemeral-x.sh https://raw.github.com/jordansissel/xdotool/master/t/ephemeral-x.sh
 	echo "XVNC exec used  : $XVNC"
 else
