@@ -33,7 +33,7 @@ if [ ! -z $XVNC ] ; then
     XVNCFLAGS="-geometry 1024x768 -AcceptKeyEvents=off -AcceptPointerEvents=off -AcceptCutText=off -SendCutText=off -PasswordFile=notsosecret"
 	 sh ephemeral-x.sh -x "$XVNC $XVNCFLAGS" bundle exec veewee vbox build "$DEFINITION" --force --auto
 else
-	echo "building bog $DEFINITION in nogui mode"
+	echo "building box $DEFINITION in nogui mode"
 	bundle exec veewee vbox build "$DEFINITION" --force --auto --nogui
 fi
 echo "validating box. Seems to be not failing as it should in case of error."
