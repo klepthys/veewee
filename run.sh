@@ -1,5 +1,9 @@
 #!/bin/sh
 set -e
+if [  -d $WORKSPACE ] ; then
+	echo "changing current working directory to : $WORKSPACE"
+	cd $WORKSPACE
+fi
 #Need to check if a rebuild is necessary.
 if [ -z $1 || ! -d "definitions/$1"] ; then
 	echo "Need definition name as arg #1, got : $1"
