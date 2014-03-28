@@ -16,13 +16,13 @@ else
 	DEFINITION=$1
 fi
 
-if [ ! -z $USE_VNC ] ; then
+if [ $USE_XVNC = true ] ; then
 	#Check for Xvnc
 	which Xvnc || XVNC=Xvnc
 	which Xvnc4 || XVNC=Xvnc4
 	[ ! -f "ephemeral-x.sh" ] || wget -O ephemeral-x.sh https://raw.github.com/jordansissel/xdotool/master/t/ephemeral-x.sh
 else
-	echo "not trying to use a GUI"
+	echo "not trying to use a GUI : set USE_XVNC to true to enable it"
 fi
 # Run inside Xvnc if possible. This lets us observe the installation process
 # if it's broken.
