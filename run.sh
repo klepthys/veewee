@@ -37,5 +37,5 @@ echo "validating box. Seems to be not failing as it should in case of error."
 
 #bundle exec veewee vbox validate 'holusion-base'
 
-bundle exec veewee vbox export 'holusion-base' --force
+bundle exec veewee vbox export $DEFINITION --force
 
