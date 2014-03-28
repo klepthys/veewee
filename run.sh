@@ -1,0 +1,37 @@
+#!/bin/sh
+set -e
+#Need to check if a rebuild is necessary.
+if [ -z $1 || ! -d "definitions/$1"] ; then
+	echo "Need definition name as arg #1, got : $1"
+	exit 1
+else
+	echo "building for definition : $1"
+	DEFINITION=$1
+fi
+
+if [ ! -z $USE_VNC ] ; then
+	#Check for Xvnc
+	which Xvnc &amp;&amp; XVNC=Xvnc
+	which Xvnc4 &amp;&amp; XVNC=Xvnc4
+	[ ! -f "ephemeral-x.sh" ] || wget -O ephemeral-x.sh https://raw.github.com/jordansissel/xdotool/master/t/ephemeral-x.sh
+else
+	echo "not trying to use a GUI"
+fi
+# Run inside Xvnc if possible. This lets us observe the installation process
+# if it's broken.
+if [ ! -z $XVNC ] ; then
+	echo "building box $DEFINITION with xvnc"
+	echo "using \"holobox\" as VNC password"
+	yes "holobox" | vncpasswd notsosecret
+    XVNCFLAGS="-geometry 1024x768 -AcceptKeyEvents=off -AcceptPointerEvents=off -AcceptCutText=off -SendCutText=off -PasswordFile=notsosecret"
+	 sh ephemeral-x.sh -x "$XVNC $XVNCFLAGS" bundle exec veewee vbox build "$DEFINITION" --force --auto
+else
+	echo "building bog $DEFINITION in nogui mode"
+	bundle exec veewee vbox build "$DEFINITION" --force --auto --nogui
+fi
+echo "validating box. Seems to be not failing as it should in case of error."
+
+#bundle exec veewee vbox validate 'holusion-base'
+
+bundle exec veewee vbox export 'holusion-base' --force
+
