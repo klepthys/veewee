@@ -32,7 +32,8 @@ if [ ! -z $XVNC ] ; then
 	echo "building box $DEFINITION with xvnc"
 	echo "using \"holobox\" as VNC password"
 	yes "holobox" | vncpasswd notsosecret
-    XVNCFLAGS="-geometry 1024x768 -AcceptKeyEvents=off -AcceptPointerEvents=off -AcceptCutText=off -SendCutText=off -PasswordFile=notsosecret"
+	INTERACTIVE="on"
+    XVNCFLAGS="-geometry 1024x768 -AcceptKeyEvents=$INTERACTIVE -AcceptPointerEvents=$INTERACTIVE -AcceptCutText=$INTERACTIVE -SendCutText=$INTERACTIVE -PasswordFile=notsosecret"
 	 sh ephemeral-x.sh -x "$XVNC $XVNCFLAGS" bundle exec veewee vbox build "$DEFINITION" --force --auto
 else
 	echo "building box $DEFINITION in nogui mode"
@@ -41,6 +42,6 @@ fi
 echo "validating box. Seems to be not failing as it should in case of error."
 
 #bundle exec veewee vbox validate 'holusion-base'
-
-bundle exec veewee vbox export $DEFINITION --force
-
+if [ $USE_VAGRANT = true ]
+	bundle exec veewee vbox export $DEFINITION --force
+fi
