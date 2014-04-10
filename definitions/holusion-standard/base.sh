@@ -3,6 +3,7 @@
 sleep 30
 
 #Everything here will probably be already installed but it doesn't hurt to check...
+export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev sudo
