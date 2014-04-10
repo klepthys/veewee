@@ -43,5 +43,6 @@ echo "validating box. Seems to be not failing as it should in case of error."
 
 #bundle exec veewee vbox validate 'holusion-base'
 if [ $USE_VAGRANT = true ];then
+	echo "exporting Vagrant Box"
 	bundle exec veewee vbox export $DEFINITION --force
 fi
