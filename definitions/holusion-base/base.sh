@@ -5,7 +5,10 @@ sleep 30
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
 apt-get -y install linux-headers-$(uname -r) build-essential
-apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev sudo
+#Libssl is problematic due to updates caused by heartbleed bug
+apt-get -y install  libssl1.0.0  libssl-dev
+apt-get -y install zlib1g-dev libreadline-gplv2-dev sudo
+
 apt-get -y install curl unzip
 
 # Set up sudo
