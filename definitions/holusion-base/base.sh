@@ -7,8 +7,8 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
   sleep 10
 done
 #Libssl is problematic due to updates caused by heartbleed bug
-apt-get -y install linux-headers-$(uname -r) build-essential libssl1.0.0  libssl-dev zlib1g-dev libreadline-gplv2-dev sudo curl unzip
-
+apt-get -y install linux-headers-$(uname -r) build-essential libssl1.0.0 zlib1g-dev libreadline-gplv2-dev sudo curl unzip
+apt-get -y libssl-dev
 
 #Everything here will probably be already installed but it doesn't hurt to check...
 export DEBIAN_FRONTEND=noninteractive
