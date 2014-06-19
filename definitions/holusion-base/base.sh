@@ -1,11 +1,9 @@
 # Update the box
 # Makes sure boot finished before beginning
 sleep 30
-lsof /var/lib/dpkg/lock
-while [ $? ];do
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
+  echo "apt-get still locked. Waiting..."
   sleep 10
-  echo "apt-get lock still used"
-  lsof /var/lib/dpkg/lock
 done
 
 
