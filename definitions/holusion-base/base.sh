@@ -1,21 +1,17 @@
 # Update the box
 # Makes sure boot finished before beginning
-sleep 30
+sleep 50
+apt-get -y update
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
   echo "apt-get still locked. Waiting..."
   sleep 10
 done
+#Libssl is problematic due to updates caused by heartbleed bug
+apt-get -y install linux-headers-$(uname -r) build-essential libssl1.0.0  libssl-dev zlib1g-dev libreadline-gplv2-dev sudo curl unzip
 
 
 #Everything here will probably be already installed but it doesn't hurt to check...
 export DEBIAN_FRONTEND=noninteractive
-apt-get -y update
-apt-get -y install linux-headers-$(uname -r) build-essential
-#Libssl is problematic due to updates caused by heartbleed bug
-apt-get -y install  libssl1.0.0  libssl-dev
-apt-get -y install zlib1g-dev libreadline-gplv2-dev sudo
-
-apt-get -y install curl unzip
 
 # Set up sudo
 echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant

@@ -5,9 +5,6 @@ HOME=/home/vagrant/
 # Create the user vagrant with password vagrant
 useradd -G sudo -p $(perl -e'print crypt("vagrant", "vagrant")') -m -s /bin/bash -N vagrant -d $HOME
 
-#Make sure sshd doesn't start before postinstall is finished!
-
-sed -i '/# Required-Start:/c\#  Required-Start: $all' /etc/init.d/ssh
 
 # Install vagrant keys
 mkdir -pm 700 $HOME/.ssh
