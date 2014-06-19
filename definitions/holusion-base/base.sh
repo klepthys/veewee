@@ -1,6 +1,14 @@
 # Update the box
 # Makes sure boot finished before beginning
 sleep 30
+lsof /var/lib/dpkg/lock
+while [ $? ];do
+  sleep 10
+  echo "apt-get lock still used"
+  lsof /var/lib/dpkg/lock
+done
+
+
 #Everything here will probably be already installed but it doesn't hurt to check...
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
