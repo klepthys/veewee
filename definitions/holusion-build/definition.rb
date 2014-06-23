@@ -28,7 +28,6 @@ Veewee::Definition.declare({
   :postinstall_files => [
     "base.sh",
     "virtualbox.sh",
-#    "cleanup-virtualbox.sh",
     "cleanup.sh",
     "zerodisk.sh"
   ],
