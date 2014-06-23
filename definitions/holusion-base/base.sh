@@ -6,12 +6,13 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
   echo "apt-get still locked. Waiting..."
   sleep 10
 done
+#Everything here will probably be already installed but it doesn't hurt to check...
+export DEBIAN_FRONTEND=noninteractive
 #Libssl is problematic due to updates caused by heartbleed bug
 apt-get -y install linux-headers-$(uname -r) build-essential libssl1.0.0 zlib1g-dev libreadline-gplv2-dev sudo curl unzip
 apt-get -y libssl-dev
 
-#Everything here will probably be already installed but it doesn't hurt to check...
-export DEBIAN_FRONTEND=noninteractive
+
 
 # Set up sudo
 echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant

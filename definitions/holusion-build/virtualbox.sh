@@ -29,8 +29,9 @@ if test -f .vbox_version ; then
   mkdir /tmp/veewee-validation
 
   # Test mount the veewee-validation
+  [ -e /usr/lib/VBoxGuestAdditions ] || ln -s /opt/VBoxGuestAdditions-$VBOX_VERSION/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
   mount -t vboxsf veewee-validation /tmp/veewee-validation
 
-
   rm $VBOX_ISO
+  
 fi
