@@ -75,6 +75,8 @@ If you want to use an external repository for the definition, you can specify a 
 
     $ bundle exec veewee <provider> define 'myubuntubox' 'git://github.com/jedi4ever/myubuntubox'
 
+Can be `git://`, `git+ssh://` or `git+http://`.
+
 
 ## Modify a definition (optional)
 
@@ -173,7 +175,7 @@ Then use the `define` command to create a new definition with a custom name. The
     # You can now edit the definition files stored in definitions/myubuntubox or build the box with:
     # veewee vbox build 'myubuntubox'
 
-**IMPORTANT:** You should avoid dots and underscores in the name because the box name gets used as the hostname also. Dots in the box name currently lead to invalid hostnames which causes several negative side effects (e.g. preventing the network devices to start). Underscores might prevent the build altogather.
+**IMPORTANT:** You should avoid dots and underscores in the name because the box name gets used as the hostname also. Dots in the box name currently lead to invalid hostnames which causes several negative side effects (e.g. preventing the network devices to start). Underscores might prevent the build altogether.
 
 Confirm that all expected files are in place:
 
