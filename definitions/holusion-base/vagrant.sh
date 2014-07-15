@@ -8,8 +8,8 @@ useradd -G sudo -p $(perl -e'print crypt("vagrant", "vagrant")') -m -s /bin/bash
 
 # Install vagrant keys
 mkdir -pm 700 $HOME/.ssh
-curl -Lo $HOME/.ssh/authorized_keys \
-  'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
+curl  -Lo $HOME/.ssh/authorized_keys \
+  'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub'
 chmod 0600 $HOME/.ssh/authorized_keys
 chown -R vagrant $HOME/.ssh
 
