@@ -1,11 +1,16 @@
 # Update the box
 # Makes sure boot finished before beginning
 sleep 50
-apt-get -y update
-while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
-  echo "apt-get still locked. Waiting..."
+echo -n "Waiting for firstboot to complete."
+while [ ! -f /etc/firstboot_OK ] ;
+do
+  echo -n "."
   sleep 10
+
 done
+echo "firstboot completed"
+#Redoundant update as of now, but better update twice than not
+apt-get -y update
 #Everything here will probably be already installed but it doesn't hurt to check...
 export DEBIAN_FRONTEND=noninteractive
 #Libssl is problematic due to updates caused by heartbleed bug
