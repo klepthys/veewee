@@ -2,7 +2,7 @@
 # Makes sure boot finished before beginning
 sleep 50
 echo -n "Waiting for firstboot to complete."
-while [ ! -f /etc/firstboot_OK ] ;
+while [ ! -f /etc/firstBoot_OK ] ;
 do
   echo -n "."
   sleep 10
