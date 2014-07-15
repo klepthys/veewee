@@ -1,10 +1,12 @@
 # Update the box
 # Makes sure boot finished before beginning
 sleep 50
-echo -n "Waiting for firstboot to complete."
+WAITLINE="Waiting for firstboot to complete."
+echo -ne "$WAITLINE\r"
 while [ ! -f /etc/firstBoot_OK ] ;
 do
-  echo -n "."
+  WAITLINE="$WAITLINE."
+  echo -ne "$WAITLINE\r"
   sleep 10
 
 done
