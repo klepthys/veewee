@@ -6,7 +6,7 @@ Veewee::Definition.declare({
   :disk_size => '10140', :disk_format => 'VDI', :hostiocache => 'off',
   :os_type_id => 'Debian_64',
   :iso_file => "holusion_installer.iso",
-  :iso_src => "http://dev.holusion.net/development/holusion_installer.iso",
+  :iso_src => "http://dev.holusion.net/holusion_installer.iso",
   :iso_download_timeout => "1000",
   :boot_wait => "10", :boot_cmd_sequence => [
      '<Esc>',
