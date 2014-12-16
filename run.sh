@@ -39,10 +39,12 @@ else
 	echo "building box $DEFINITION in nogui mode"
 	bundle exec veewee vbox build "$DEFINITION" --force --auto --nogui
 fi
-echo "validating box. Seems to be not failing as it should in case of error."
 
+#echo "validating box. Seems to be not failing as it should in case of error."
 #bundle exec veewee vbox validate 'holusion-base'
+
 if [ $USE_VAGRANT = true ];then
 	echo "exporting Vagrant Box"
 	bundle exec veewee vbox export $DEFINITION --force
+	md5sum $DEFINITION.box > $DEFINITION-md5
 fi
