@@ -13,7 +13,7 @@ if test -f .vbox_version ; then
 
   # If libdbus is not installed, virtualbox will not autostart
   apt-get -y install --no-install-recommends libdbus-1-3
-
+  apt-get clean all
   # Install the VirtualBox guest additions
   VBOX_VERSION=$(cat .vbox_version)
   VBOX_ISO=VBoxGuestAdditions_$VBOX_VERSION.iso
@@ -33,5 +33,5 @@ if test -f .vbox_version ; then
   mount -t vboxsf veewee-validation /tmp/veewee-validation
 
   rm $VBOX_ISO
-  
+
 fi
